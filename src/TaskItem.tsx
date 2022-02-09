@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import {Button, Checkbox, IconButton, Paper, Typography} from '@mui/material';
 import {TaskType} from './App';
 import HighlightOffSharpIcon from '@mui/icons-material/HighlightOffSharp';
+import {EditableSpan} from './EditableSpan';
 
 type TaskItemPropsType = {
     id: string
@@ -9,6 +10,7 @@ type TaskItemPropsType = {
     completed: boolean
     removeTask: (id: string) => void
     changeTaskCompleted: (id: string) => void
+    changeTaskTitle: (id: string, title: string) => void
 }
 
 export const TaskItem: FC<TaskItemPropsType> = (
@@ -17,17 +19,15 @@ export const TaskItem: FC<TaskItemPropsType> = (
         title,
         completed,
         removeTask,
-        changeTaskCompleted
+        changeTaskCompleted,
+        changeTaskTitle
     }
 ) => {
     // Functions
-    const handlerChange = () => {
-        changeTaskCompleted(id)
-    }
-    // Functions
-    const handlerClick = () => {
-        removeTask(id)
-    }
+    const handlerChange = () => changeTaskCompleted(id)
+    const handlerClickButton = () => removeTask(id)
+    const handlerClickSpan = (title: string) => changeTaskTitle(id, title)
+
     return (
         <Paper className={'flexBetween p10 m5'} elevation={3}>
             <Checkbox
@@ -35,10 +35,8 @@ export const TaskItem: FC<TaskItemPropsType> = (
                 checked={completed}
                 onChange={handlerChange}
             />
-            <Typography variant={'subtitle1'}>
-                {title}
-            </Typography>
-            <IconButton color={'warning'} onClick={handlerClick}>
+            <EditableSpan title={title} callBack={handlerClickSpan}/>
+            <IconButton color={'warning'} onClick={handlerClickButton}>
                 <HighlightOffSharpIcon/>
             </IconButton>
         </Paper>

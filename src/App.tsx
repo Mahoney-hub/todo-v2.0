@@ -85,6 +85,14 @@ const App = () => {
                 (task.id !== idTask) ? task : {...task, completed: !task.completed})
         })
     }
+    const changeTaskTitle = (idTodo: string, idTask: string, title: string) => {
+        setTasks({
+            ...tasks,
+            [idTodo]: tasks[idTodo].map(task =>
+                (task.id !== idTask) ? task : {...task, title: title}
+            )
+        })
+    }
 
     const getFilteredTasks = (todoList: TodoType) => {
         switch (todoList.filter) {
@@ -110,6 +118,7 @@ const App = () => {
                       removeTask={removeTask}
                       changeTaskCompleted={changeTaskCompleted}
                       changeTodoListFilter={changeTodoListFilter}
+                      changeTaskTitle={changeTaskTitle}
                 />
             </Grid>
         )

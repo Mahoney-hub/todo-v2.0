@@ -16,6 +16,7 @@ type TodoPropsType = {
     removeTask: (idTodo: string, idTask: string) => void
     changeTaskCompleted: (idTodo: string, idTask: string) => void
     changeTodoListFilter: (id: string, filter: FilterValueType) => void
+    changeTaskTitle: (idTodo: string, idTask: string, title: string) => void
 }
 
 export const Todo: FC<TodoPropsType> = (
@@ -28,24 +29,18 @@ export const Todo: FC<TodoPropsType> = (
         addTask,
         removeTask,
         changeTaskCompleted,
-        changeTodoListFilter
+        changeTodoListFilter,
+        changeTaskTitle
     }
 ) => {
     // Functions
-    const handlerRemoveTodo = () => {
-        removeTodoList(id)
-    }
-    const handlerAddTask = (title: string) => {
-        addTask(id, title)
-    }
-    const handlerRemoveTask = (idTask: string) => {
-        removeTask(id, idTask)
-    }
-    const handlerChangeTaskCompleted = (idTask: string) => {
-        changeTaskCompleted(id, idTask)
-    }
-    const handlerChangeTodoListFilter = (filter: FilterValueType) => {
-        changeTodoListFilter(id, filter)
+    const handlerRemoveTodo = () => removeTodoList(id)
+    const handlerAddTask = (title: string) => addTask(id, title)
+    const handlerRemoveTask = (idTask: string) => removeTask(id, idTask)
+    const handlerChangeTaskCompleted = (idTask: string) => changeTaskCompleted(id, idTask)
+    const handlerChangeTodoListFilter = (filter: FilterValueType) => changeTodoListFilter(id, filter)
+    const handlerChangeTaskTitle = (idTask: string, title: string) => {
+        changeTaskTitle(id, idTask, title)
     }
     return (
         <Paper elevation={0}>
@@ -54,6 +49,7 @@ export const Todo: FC<TodoPropsType> = (
             <Tasks task={task}
                    removeTask={handlerRemoveTask}
                    changeTaskCompleted={handlerChangeTaskCompleted}
+                   changeTaskTitle={handlerChangeTaskTitle}
             />
             <ButtonFilters filter={filter} changeTodoListFilter={handlerChangeTodoListFilter}/>
         </Paper>

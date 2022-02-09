@@ -6,13 +6,15 @@ type TasksPropsType = {
     task: TaskType[]
     removeTask: (idTask: string) => void
     changeTaskCompleted: (idTask: string) => void
+    changeTaskTitle: (idTask: string, title: string) => void
 }
 
 export const Tasks: FC<TasksPropsType> = (
     {
         task,
         removeTask,
-        changeTaskCompleted
+        changeTaskCompleted,
+        changeTaskTitle
     }
 ) => {
     // Components before rendering
@@ -22,6 +24,7 @@ export const Tasks: FC<TasksPropsType> = (
                       {...t}
                       removeTask={removeTask}
                       changeTaskCompleted={changeTaskCompleted}
+                      changeTaskTitle={changeTaskTitle}
             />
         )
     })
