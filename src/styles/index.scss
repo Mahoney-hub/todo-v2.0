@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #E7EBF0;
+  color: #17252a;
+}
+
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.maxWidth {
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.p10 {
+  padding: 10px;
+}
+
+.m5 {
+  margin: 5px;
+}
+
+.mv20 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.bgcGrey {
+  background-color: #455a64;
+  color: #E7EBF0;
+}
+
+.w400 {
+  width: 400px;
+}
