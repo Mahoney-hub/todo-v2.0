@@ -7,7 +7,7 @@ export const styleApp = createTheme({
             main: blueGrey[700],
         },
         secondary: {
-            main: '#2b7a78',
+            main: blueGrey[900],
         },
         success: {
             main: '#3AAFA9',

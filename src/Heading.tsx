@@ -14,9 +14,6 @@ export const Heading: FC<HeadingPropsType> = (
     }
 ) => {
     // Functions
-    // const handlerClick = () => {
-    //     callBack()
-    // }
     return (
         <Box className={'flexCenter bgcGrey'}>
             <Typography variant={'h5'}>
@@ -25,7 +22,6 @@ export const Heading: FC<HeadingPropsType> = (
             <IconButton color={'info'} onClick={callBack}>
                 <DeleteForeverRoundedIcon/>
             </IconButton>
-            {/*<button onClick={handlerClick}>X</button>*/}
         </Box>
     );
 };

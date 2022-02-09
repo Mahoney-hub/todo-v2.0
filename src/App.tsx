@@ -59,14 +59,57 @@ const App = () => {
         setTodoList(todoList.filter(todo => todo.id !== id))
         delete tasks[id]
     }
+    const changeTodoListFilter = (id: string, filter: FilterValueType) => {
+        setTodoList(todoList.map(todo =>
+            (todo.id !== id) ? todo : {...todo, filter: filter}
+        ))
+    }
+
+    const addTask = (id: string, title: string) => {
+        const newTask = {id: v1(), title: title, completed: false}
+        setTasks({
+            ...tasks,
+            [id]: [newTask, ...tasks[id]]
+        })
+    }
+    const removeTask = (idTodo: string, idTask: string) => {
+        setTasks({
+            ...tasks,
+            [idTodo]: tasks[idTodo].filter(task => task.id !== idTask)
+        })
+    }
+    const changeTaskCompleted = (idTodo: string, idTask: string) => {
+        setTasks({
+            ...tasks,
+            [idTodo]: tasks[idTodo].map(task =>
+                (task.id !== idTask) ? task : {...task, completed: !task.completed})
+        })
+    }
+
+    const getFilteredTasks = (todoList: TodoType) => {
+        switch (todoList.filter) {
+            case 'active' :
+                return tasks[todoList.id].filter(task => task.completed === false)
+            case 'completed':
+                return tasks[todoList.id].filter(task => task.completed === true)
+            default:
+                return tasks[todoList.id]
+        }
+    }
     // Components before rendering
     const componentTodoList = todoList.map(todo => {
+        const filteredTasks = getFilteredTasks(todo)
         return (
             <Grid item className={'w400'} key={todo.id}>
                 <Todo id={todo.id}
                       title={todo.title}
-                      task={tasks[todo.id]}
+                      filter={todo.filter}
+                      task={filteredTasks}
                       removeTodoList={removeTodoList}
+                      addTask={addTask}
+                      removeTask={removeTask}
+                      changeTaskCompleted={changeTaskCompleted}
+                      changeTodoListFilter={changeTodoListFilter}
                 />
             </Grid>
         )
