@@ -36,15 +36,15 @@ const App = () => {
     ])
     const [tasks, setTasks] = useState<TasksType>({
         [todoListID1]: [
-            {id: v1(), title: 'английский', completed: false},
+            {id: v1(), title: 'английский', completed: true},
             {id: v1(), title: 'HTML', completed: false}
         ],
         [todoListID2]: [
             {id: v1(), title: 'хлеб', completed: false},
-            {id: v1(), title: 'молоко', completed: false}
+            {id: v1(), title: 'молоко', completed: true}
         ],
         [todoListID3]: [
-            {id: v1(), title: 'заняться учебой', completed: false},
+            {id: v1(), title: 'заняться учебой', completed: true},
             {id: v1(), title: 'заняться спортом', completed: false}
         ],
     })
@@ -97,9 +97,9 @@ const App = () => {
     const getFilteredTasks = (todoList: TodoType) => {
         switch (todoList.filter) {
             case 'active' :
-                return tasks[todoList.id].filter(task => task.completed === false)
+                return tasks[todoList.id].filter(task => !task.completed)
             case 'completed':
-                return tasks[todoList.id].filter(task => task.completed === true)
+                return tasks[todoList.id].filter(task => task.completed)
             default:
                 return tasks[todoList.id]
         }

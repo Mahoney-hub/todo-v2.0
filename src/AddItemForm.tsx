@@ -11,20 +11,22 @@ export const AddItemForm: FC<AddItemFormPropsType> = (
     }
 ) => {
     const [title, setTitle] = useState<string>('')
+    const [error, setError] = useState<boolean>(false)
     // Functions
     const handlerChange = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
+        setError(false)
     }
     const handlerClick = () => {
         if (title.trim().length) {
             callBack(title)
             setTitle('')
+        } else {
+            setError(true)
         }
     }
     const handlerKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-            handlerClick()
-        }
+        (e.key === 'Enter') ? handlerClick() : setError(true)
     }
     return (
         <Box className={'flexCenter maxWidth p10'}>
@@ -36,6 +38,7 @@ export const AddItemForm: FC<AddItemFormPropsType> = (
                        value={title}
                        onChange={handlerChange}
                        onKeyPress={handlerKeyPress}
+                       error={error}
             />
             <Button variant={'contained'}
                     color={'warning'}
