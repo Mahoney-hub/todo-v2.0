@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import {Paper} from '@mui/material';
-import {Heading} from './Heading';
-import {Tasks} from './Tasks';
-import {FilterValueType, TaskType} from './App';
+import {Heading} from './Tasks/Heading';
+import {Tasks} from './Tasks/Tasks';
+import {FilterValueType, TaskType} from '../App';
 import {ButtonFilters} from './ButtonFilters';
 import {AddItemForm} from './AddItemForm';
 

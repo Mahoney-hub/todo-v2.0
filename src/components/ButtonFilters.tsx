@@ -1,6 +1,6 @@
 import {Button, ButtonGroup} from '@mui/material';
 import React, {FC, MouseEvent} from 'react';
-import {FilterValueType} from './App';
+import {FilterValueType} from '../App';
 
 type ButtonFiltersPropsType = {
     filter: FilterValueType

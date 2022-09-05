@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import {v1} from 'uuid';
-import {NavBar} from './NavBar';
-import {Grid, ThemeProvider} from '@mui/material';
-import {styleApp} from './styles/styleApp';
-import {AddItemForm} from './AddItemForm';
-import {Todo} from './Todo';
+import {NavBar} from './components/Tasks/NavBar';
+import {Grid} from '@mui/material';
+import {AddItemForm} from './components/AddItemForm';
+import {Todo} from './components/Todo';
 
 export type FilterValueType = 'all' | 'active' | 'completed'
 
@@ -126,13 +125,11 @@ const App = () => {
 
     return (
         <>
-            <ThemeProvider theme={styleApp}>
-                <NavBar/>
-                <AddItemForm callBack={addTodoList}/>
-                <Grid container spacing={4} justifyContent={'center'}>
-                    {componentTodoList}
-                </Grid>
-            </ThemeProvider>
+            <NavBar/>
+            <AddItemForm callBack={addTodoList}/>
+            <Grid container spacing={4} justifyContent={'center'}>
+                {componentTodoList}
+            </Grid>
         </>
     );
 };

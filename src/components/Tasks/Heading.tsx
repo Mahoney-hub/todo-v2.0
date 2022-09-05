@@ -15,11 +15,11 @@ export const Heading: FC<HeadingPropsType> = (
 ) => {
     // Functions
     return (
-        <Box className={'flexCenter bgcGrey'}>
-            <Typography variant={'h5'}>
+        <Box className={'flexBetween todo-title'}>
+            <Typography variant={'h6'}>
                 {title}
             </Typography>
-            <IconButton color={'info'} onClick={callBack}>
+            <IconButton color={'secondary'} onClick={callBack}>
                 <DeleteForeverRoundedIcon/>
             </IconButton>
         </Box>

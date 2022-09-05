@@ -39,9 +39,14 @@ body {
   margin-bottom: 20px;
 }
 
-.bgcGrey {
-  background-color: #455a64;
-  color: #E7EBF0;
+.todo-title {
+  background-color: #00c853;
+  color: #090909;
+  text-transform: uppercase;
+
+  h6 {
+    margin: 0 auto;
+  }
 }
 
 .w400 {

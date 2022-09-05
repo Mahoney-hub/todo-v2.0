@@ -41,7 +41,7 @@ export const AddItemForm: FC<AddItemFormPropsType> = (
                        error={error}
             />
             <Button variant={'contained'}
-                    color={'warning'}
+                    color={'secondary'}
                     size={'small'}
                     onClick={handlerClick}
             >

@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import {Button, Checkbox, IconButton, Paper, Typography} from '@mui/material';
-import {TaskType} from './App';
+import {TaskType} from '../../App';
 import HighlightOffSharpIcon from '@mui/icons-material/HighlightOffSharp';
-import {EditableSpan} from './EditableSpan';
+import {EditableSpan} from '../EditableSpan';
 
 type TaskItemPropsType = {
     id: string
@@ -31,7 +31,6 @@ export const TaskItem: FC<TaskItemPropsType> = (
     return (
         <Paper className={'flexBetween p10 m5'} elevation={3}>
             <Checkbox
-                color={'warning'}
                 checked={completed}
                 onChange={handlerChange}
             />
