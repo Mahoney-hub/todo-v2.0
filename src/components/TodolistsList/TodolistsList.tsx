@@ -14,22 +14,18 @@ import {Todolist} from './Todolist';
 import {useAppDispatch, useAppSelector} from '../../redux/store';
 import {TaskStatuses} from '../../api/api';
 import {AddItemForm} from '../AddItemForm/AddItemForm';
+import {Navigate} from 'react-router-dom';
 
-type PropsType = {
-    demo?: boolean
-}
-
-export const TodolistsList: React.FC<PropsType> = ({demo = false}) => {
+export const TodolistsList = () => {
     const todolists = useAppSelector(state => state.todolists)
     const tasks = useAppSelector(state => state.tasks)
+    const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        if (demo) {
-            return;
+        if (isLoggedIn) {
+            dispatch(fetchTodolistsTC())
         }
-        const thunk = fetchTodolistsTC()
-        dispatch(thunk)
     }, [])
 
     const removeTask = useCallback(function (id: string, todolistId: string) {
@@ -72,6 +68,9 @@ export const TodolistsList: React.FC<PropsType> = ({demo = false}) => {
         dispatch(thunk)
     }, [dispatch])
 
+    if (!isLoggedIn) {
+        return <Navigate to={'login'}/>
+    }
 
     return <>
         <Grid container style={{padding: '20px'}}>
@@ -94,7 +93,6 @@ export const TodolistsList: React.FC<PropsType> = ({demo = false}) => {
                                 removeTodolist={removeTodolist}
                                 changeTaskTitle={changeTaskTitle}
                                 changeTodolistTitle={changeTodolistTitle}
-                                demo={demo}
                             />
                         </Paper>
                     </Grid>

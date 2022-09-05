@@ -1,13 +1,11 @@
 import React, {useCallback, useEffect} from 'react'
 import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
-import {Delete} from '@mui/icons-material';
 import {Navigate} from 'react-router-dom';
 import {FilterValuesType, TodolistDomainType} from '../../redux/reducers/todolists-reducer';
 import {useAppDispatch, useAppSelector} from '../../redux/store';
 import {TaskStatuses, TaskType} from '../../api/api';
 import {Task} from './Task';
-import {EditableSpan} from '../EditableSpan/EditableSpan';
 import {AddItemForm} from '../AddItemForm/AddItemForm';
 import {fetchTasksTC} from '../../redux/reducers/tasks-reducer';
 import {Box, ButtonGroup, Typography} from '@mui/material';
@@ -24,10 +22,9 @@ type PropsType = {
     removeTask: (taskId: string, todolistId: string) => void
     removeTodolist: (id: string) => void
     changeTodolistTitle: (id: string, newTitle: string) => void
-    demo?: boolean
 }
 
-export const Todolist = React.memo(function ({demo = false, ...props}: PropsType) {
+export const Todolist = React.memo(function ({...props}: PropsType) {
     const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn)
 
     const dispatch = useAppDispatch()
