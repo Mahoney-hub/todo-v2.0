@@ -26,17 +26,25 @@ body {
   margin: 20px auto;
 }
 
-.p10 {
-  padding: 10px;
+.todolist {
+  width: 360px;
 }
 
-.m5 {
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
   margin: 5px;
 }
 
-.mv20 {
-  margin-top: 20px;
-  margin-bottom: 20px;
+.add-item-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  padding: 10px;
+  margin: 20px auto;
 }
 
 .todo-title {
@@ -47,10 +55,6 @@ body {
   h6 {
     margin: 0 auto;
   }
-}
-
-.w400 {
-  width: 400px;
 }
 
 .lineThrough {

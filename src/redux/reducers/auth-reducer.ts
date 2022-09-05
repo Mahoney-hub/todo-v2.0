@@ -70,4 +70,7 @@ export const initializeAppTC = () => (dispatch: Dispatch) => {
 }
 
 // types
-type ActionsType = ReturnType<typeof setIsLoggedInAC> | SetAppStatusActionType | SetAppErrorActionType
+type ActionsType =
+    ReturnType<typeof setIsLoggedInAC>
+    | SetAppStatusActionType
+    | SetAppErrorActionType
