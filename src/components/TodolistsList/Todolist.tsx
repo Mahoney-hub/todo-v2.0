@@ -65,7 +65,7 @@ export const Todolist = React.memo(function ({...props}: PropsType) {
 
     return (
         <Paper elevation={4} className={'todolist'}>
-            <Box className={'flexBetween todo-title'}>
+            <Box className={'todo-title'}>
                 <Typography variant={'h6'}>
                     {props.todolist.title}
                 </Typography>

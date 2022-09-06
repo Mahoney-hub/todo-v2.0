@@ -9,21 +9,11 @@ body {
   color: #17252a;
 }
 
-.flexCenter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.flexBetween {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.maxWidth {
-  max-width: 400px;
-  margin: 20px auto;
+.selection {
+  text-align: center;
+  button {
+    margin: 40px;
+  }
 }
 
 .header {
@@ -31,7 +21,7 @@ body {
   flex-direction: row-reverse;
   padding: 10px;
   margin-bottom: 20px;
-  background: #eef1f7;
+  background: #455a64;
 }
 
 .todolist {
@@ -55,7 +45,7 @@ body {
   margin: 20px auto;
 }
 
-.add-todolist{
+.add-todolist {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,6 +54,9 @@ body {
 }
 
 .todo-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #00c853;
   color: #090909;
   text-transform: uppercase;

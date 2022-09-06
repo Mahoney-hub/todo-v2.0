@@ -1,18 +1,16 @@
 import React, {useEffect} from 'react'
-import Button from '@mui/material/Button';
-import LinearProgress from '@mui/material/LinearProgress';
 import {Navigate, Route, Routes} from 'react-router-dom';
-import {CircularProgress} from '@mui/material';
-import {initializeAppTC, logoutTC} from './redux/reducers/auth-reducer';
+import {LinearProgress} from '@mui/material';
+import {initializeAppTC} from './redux/reducers/auth-reducer';
 import {useAppDispatch, useAppSelector} from './redux/store';
 import {TodolistsList} from './components/TodolistsList/TodolistsList';
-import {Login} from './pages/Login';
+import {Login} from './pages/Login/Login';
 import {ErrorSnackbar} from './components/ErrorSnackbar/ErrorSnackbar';
+import Box from '@mui/material/Box';
+import {Selection} from './pages/Selection/Selection';
 
 function App() {
-    const status = useAppSelector(state => state.app.status)
     const isInitialize = useAppSelector(state => state.app.isInitialize)
-    const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
@@ -20,30 +18,19 @@ function App() {
     }, [])
 
     if (!isInitialize) {
-        return <div
-            style={{position: 'fixed', top: '30%', textAlign: 'center', width: '100%'}}>
-            <CircularProgress/>
-        </div>
-    }
-
-    const logoutHandler = () => {
-        dispatch(logoutTC())
+        return (
+            <Box sx={{ width: '100%' }}>
+                <LinearProgress />
+            </Box>
+        )
     }
 
     return (
         <div className="App">
             <ErrorSnackbar/>
-            {status === 'loading' && <LinearProgress/>}
-
-            {/*<header className={'header'}>*/}
-            {/*    {isLoggedIn*/}
-            {/*        ? <Button variant={'contained'} color={'secondary'} size={'small'} onClick={logoutHandler}>*/}
-            {/*            Log out</Button>*/}
-            {/*        : <Button variant={'contained'} color={'secondary'} size={'small'}>Login</Button>*/}
-            {/*    }*/}
-            {/*</header>*/}
             <Routes>
                 <Route path="/" element={<TodolistsList/>}/>
+                <Route path='selection' element={<Selection/>}/>
                 <Route path="login" element={<Login/>}/>
                 <Route path="404" element={<h1>404: PAGE NOT FOUND</h1>}/>
                 <Route path="*" element={<Navigate to={'/404'}/>}/>

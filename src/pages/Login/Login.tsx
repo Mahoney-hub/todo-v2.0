@@ -4,13 +4,12 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
-import FormLabel from '@mui/material/FormLabel';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import {useFormik} from 'formik';
 import {Navigate} from 'react-router-dom';
-import {useAppDispatch, useAppSelector} from '../redux/store';
-import {loginTC} from '../redux/reducers/auth-reducer';
+import {useAppDispatch, useAppSelector} from '../../redux/store';
+import {loginTC} from '../../redux/reducers/auth-reducer';
 
 type FormikErrorType = {
     email?: string

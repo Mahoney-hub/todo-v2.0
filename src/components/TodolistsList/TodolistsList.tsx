@@ -66,23 +66,22 @@ export const TodolistsList = () => {
     }
 
     if (!isLoggedIn) {
-        return <Navigate to={'login'}/>
+        return <Navigate to={'selection'}/>
     }
 
     return <>
-        {/*<Grid container style={{padding: '20px'}}>*/}
-        {/*    <AddTodoList addItem={addTodolist}/>*/}
-        {/*</Grid>*/}
         <header className={'header'}>
             {isLoggedIn
                 ? <>
                     <Button variant={'contained'} color={'secondary'} size={'small'} onClick={logoutHandler}>
                         Log out</Button>
-                    <AddTodoList addItem={addTodolist}/>
                 </>
                 : <Button variant={'contained'} color={'secondary'} size={'small'}>Login</Button>
             }
         </header>
+        <Grid container style={{padding: '20px'}}>
+            <AddTodoList addItem={addTodolist}/>
+        </Grid>
         <Grid container spacing={3} className={''} justifyContent={'center'}>
             {
                 todolists.map(tl => {
