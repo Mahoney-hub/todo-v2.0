@@ -1,8 +1,5 @@
 import React, {useEffect} from 'react'
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
 import LinearProgress from '@mui/material/LinearProgress';
 import {Navigate, Route, Routes} from 'react-router-dom';
 import {CircularProgress} from '@mui/material';
@@ -36,24 +33,21 @@ function App() {
     return (
         <div className="App">
             <ErrorSnackbar/>
-            <AppBar position="static">
-                <Toolbar>
-                    {isLoggedIn
-                        ? <Button variant={'contained'} color={'secondary'} size={'large'} onClick={logoutHandler}>Log
-                            out</Button>
-                        : <Button variant={'contained'} color={'secondary'} size={'large'}>Login</Button>
-                    }
-                </Toolbar>
-                {status === 'loading' && <LinearProgress/>}
-            </AppBar>
-            <Container fixed>
-                <Routes>
-                    <Route path="/" element={<TodolistsList/>}/>
-                    <Route path="login" element={<Login/>}/>
-                    <Route path="404" element={<h1>404: PAGE NOT FOUND</h1>}/>
-                    <Route path="*" element={<Navigate to={'/404'}/>}/>
-                </Routes>
-            </Container>
+            {status === 'loading' && <LinearProgress/>}
+
+            {/*<header className={'header'}>*/}
+            {/*    {isLoggedIn*/}
+            {/*        ? <Button variant={'contained'} color={'secondary'} size={'small'} onClick={logoutHandler}>*/}
+            {/*            Log out</Button>*/}
+            {/*        : <Button variant={'contained'} color={'secondary'} size={'small'}>Login</Button>*/}
+            {/*    }*/}
+            {/*</header>*/}
+            <Routes>
+                <Route path="/" element={<TodolistsList/>}/>
+                <Route path="login" element={<Login/>}/>
+                <Route path="404" element={<h1>404: PAGE NOT FOUND</h1>}/>
+                <Route path="*" element={<Navigate to={'/404'}/>}/>
+            </Routes>
         </div>
     )
 }
